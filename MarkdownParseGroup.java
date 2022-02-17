@@ -21,6 +21,7 @@ public class MarkdownParseGroup {
                 continue;
             }
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
+            if (nextCloseBracket == -1){ break;}
             while (markdown.charAt(nextCloseBracket - 1) == '\\' && markdown.charAt(nextCloseBracket - 2) != '\\') {
                 nextCloseBracket = markdown.indexOf("]", nextCloseBracket + 1);
                 if (nextCloseBracket == -1) {
@@ -35,11 +36,17 @@ public class MarkdownParseGroup {
                 break;
             }
             int closeParen = markdown.indexOf(")", openParen);
+            if (closeParen == -1){ break;}
             if (nextCloseBracket + 1 == openParen) {
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
             }
             currentIndex = closeParen + 1;
+            
+           // System.out.println("current index:" + currentIndex);
+           // System.out.println("next bracket :" + nextOpenBracket + " " + nextCloseBracket);
+            //System.out.println("next ():" + openParen + " " + closeParen);
         }
+
         return toReturn;
     }
 
