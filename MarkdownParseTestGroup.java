@@ -14,7 +14,7 @@ public class MarkdownParseTestGroup {
     public void testEmpty() throws IOException {
         assertLinks(List.of(), "emptyGroup.md");
     }
-    */
+    
     @Test
     public void testExtraSpace() throws IOException {
         assertLinks(List.of(), "extraSpaceGroup.md");
@@ -71,5 +71,25 @@ public class MarkdownParseTestGroup {
         ArrayList<String> links = MarkdownParseGroup.getLinks(contents);
 
         assertEquals(expectedLinks, links);
+    }*/
+    @Test
+    public void testSnippet1() throws IOException{
+        String contents= Files.readString(Path.of("./snippet1.md"));
+        List<String> expect = List.of("'google.com","google.com", "ucsd.edu");
+        assertEquals(expect, MarkdownParseGroup.getLinks(contents));
+    }
+    
+    @Test
+    public void testSnippet2() throws IOException{
+        String contents= Files.readString(Path.of("./snippet2.md"));
+        List<String> expect = List.of("a.com","a.com(())", "example.com");
+        assertEquals(expect, MarkdownParseGroup.getLinks(contents));
+    }
+    @Test
+    public void testSnippet3() throws IOException{
+        String contents= Files.readString(Path.of("./snippet3.md"));
+        List<String> expect = List.of("https://www.twitter.com","https://ucsd-cse15l-w22.github.io/",
+         "https://cse.ucsd.edu/");
+        assertEquals(expect, MarkdownParseGroup.getLinks(contents));
     }
 }

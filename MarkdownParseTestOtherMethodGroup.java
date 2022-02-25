@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 public class MarkdownParseTestOtherMethodGroup {
     // We're doing unit testing here. We want to make sure getLinks works
     // exactly as we expect it to.
-    @Test
+    /* @Test
     public void testEmpty() {
         assertEquals(List.of(), MarkdownParseGroup.getLinks(""));
     }
@@ -52,5 +52,5 @@ public class MarkdownParseTestOtherMethodGroup {
 
         String standardOutput = myOut.toString();
         assertEquals("[google.com]\n", standardOutput);
-    }
+    } */
 }
